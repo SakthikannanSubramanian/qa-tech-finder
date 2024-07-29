@@ -1,0 +1,22 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.app-main {
+  flex-grow: 1; 
+  overflow-y: auto;
+  padding: 20px;
+  margin-bottom: 60px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* Optional: Change the background color */
+  padding: 10px 0; /* Optional: Adjust the padding */
+  text-align: center; /* Optional: Center the text */
+  height: 30px;
+}

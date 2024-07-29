@@ -1,0 +1,12 @@
+{
+  "name": "qa-tech-finder",
+  "version": "1.0.0",
+  "description": "Smart Tech Choices Made Easy with Detailed Comparisons of QE tech",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,41 @@
+.tech-chips-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-child-chips-container,
+.tech-grandchild-chips-container{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-child-chips-container-wrapper,
+.tech-grandchild-chips-container-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; 
+  }
+  
+  .tech-child-chips-container-wrapper p ,
+  .tech-grandchild-chips-container-wrapper p {
+    margin-bottom: 10px; 
+    font-size: large;
+  }
+
+  .tabs-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    margin-top: 2%;
+  }
+  
