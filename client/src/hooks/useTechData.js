@@ -21,6 +21,5 @@ export const useTechData = (selectedTech, selectedChildTech) => {
       : null
   );
 
-
   return { loading, error, topicsData, topicChildData, topicGrandChildData };
 };

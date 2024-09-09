@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
-import Contact from './pages/contact/Contact';
+import AIExpert from './pages/aiexpert/AIExpert';
 import "./App.css"
 
 const App = () => (
@@ -15,7 +15,7 @@ const App = () => (
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/ai-expert" element={<AIExpert />} />
                 </Routes>
             </main>
             <Footer/>

@@ -24,6 +24,7 @@ const Home = () => {
   const handleTechClick = (techName) => {
     setSelectedTech(techName);
     setSelectedChildTech(null);
+    setSelectedGrandChildTech(null);
   };
 
   const handleTechChildClick = (techChildName) => {
@@ -33,7 +34,6 @@ const Home = () => {
 
   const handleTechGrandChildClick = (techGrandChildName) => {
     setSelectedGrandChildTech(techGrandChildName);
-    console.log(techGrandChildName)
   };
 
   const techChildRef = useRef(null);
