@@ -2,6 +2,7 @@ const {
     xCUITest,
     mockk,
     appium,
+    appium_mobile_app,
     espresso,
     gradle,
     androidprofiler,
@@ -61,7 +62,15 @@ const {
     zap,
     browserStack,
     sitespeed,
-    prometheus
+    prometheus,
+    growthBook,
+    optimizely,
+    burpSuite,
+    mockServer,
+    dbFit,
+    valgrind,
+    split,
+    optimizely_mobile,
    } = require("./descriptions.js");
   
  const completeData = [{
@@ -126,7 +135,8 @@ const {
              id: "security-testing",
              children: [
                 snyk,
-                zap
+                zap,
+                burpSuite
              ]
           } , {
              label: "Accessbility Testing",
@@ -164,7 +174,14 @@ const {
                 grafana,
                 prometheus
              ]
-          } 
+          }, {
+            label: "A/B Testing",
+            id: "abTesting",
+            children: [
+               growthBook,
+               optimizely
+            ]
+         } 
        ]
     },
     {
@@ -244,7 +261,20 @@ const {
              grafana,
              prometheus
           ]
-       }]
+       }, {
+         label: "Service Virtualisation Testing",
+         id: "service-virtualisation-testing",
+         children: [
+            mockServer,
+            wireMock
+         ]
+      }, {
+         label: "Data Migration Testing",
+         id: "data-migration-testing",
+         children: [
+            dbFit
+         ]
+      }]
     },
     {
        label: "Mobile Apps",
@@ -340,8 +370,31 @@ const {
                 xcode,
                 firebase
              ]
-          }]
-    },
+          }, {
+            label: "A/B Testing",
+            id: "abTesting",
+            children: [
+               optimizely_mobile,
+               split
+            ]
+         }, {
+            label: "Memory Leak Testing",
+            id: "memoryLeakTesting",
+            children: [
+               valgrind
+            ]
+         } ]
+    },    {
+      label: "Devices",
+      id: "devices",
+      children: [{
+         label: "Multi Functional Device",
+         id: "multifunctionaldevicetesting",
+         children: [
+            appium_mobile_app
+         ]
+      }]
+   }
  ]
 
  module.exports = completeData;

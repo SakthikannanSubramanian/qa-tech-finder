@@ -22,7 +22,7 @@ export const fetchData = () => {
     return async dispatch => {
         dispatch(fetchDataRequest());
         try {
-            const response = await axios.get('http://localhost:5001/api/v1/data');
+            const response = await axios.get('http://172.20.0.2:5001/api/v1/data');//'http://backend:5001/api/v1/data'
             dispatch(fetchDataSuccess(response.data));
         } catch (error) {
             dispatch(fetchDataFailure(error.message));
