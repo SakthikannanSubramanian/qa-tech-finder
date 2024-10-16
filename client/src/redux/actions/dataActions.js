@@ -4,6 +4,10 @@ export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 
+
+const completeData = require("./data/complete-data");
+
+
 const fetchDataRequest = () => ({
     type: FETCH_DATA_REQUEST,
 });
@@ -22,8 +26,10 @@ export const fetchData = () => {
     return async dispatch => {
         dispatch(fetchDataRequest());
         try {
-            const response = await axios.get('http://172.20.0.2:5001/api/v1/data');//'http://backend:5001/api/v1/data'
-            dispatch(fetchDataSuccess(response.data));
+
+            // const response = await axios.get('http://172.20.0.2:5001/api/v1/data');//'http://backend:5001/api/v1/data'
+            const response = completeData;
+            dispatch(fetchDataSuccess(response));
         } catch (error) {
             dispatch(fetchDataFailure(error.message));
         }
