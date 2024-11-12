@@ -12,29 +12,15 @@ import RecommendationSubmissionBlock from "../insightX/RecommendationSubmissionB
 import Acknowledgement from "../insightX/Acknowledgement";
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
+  const [openInsightXModal, setOpenInsightXModal] = useState(false);
   const [showPrimaryQuestionBlock, setShowPrimaryQuestionBlock] =
     useState(true);
   const [showLike, setShowLike] = useState(false);
   const [showDislike, setShowDislike] = useState(false);
   const [showRecommendation, setShowRecommendation] = useState(false);
   const [showAcknowledgement, setShowAcknowledgement] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const titleStyle = {
-    "text-align": "center",
-    color: "#FFFFFF",
-    "font-size": "30px",
-    "font-family": " Georgia, serif",
-  };
-  const subtitleStyle = {
-    "text-align": "center",
-    color: "#FFFFFF",
-    "font-size": "20px",
-    "font-family": "Lucida Console, Courier, monospace",
-  };
-
-
+  const handleOpenInsightXModal = () => setOpenInsightXModal(true);
+  const handleCloseOpenInsightXModal = () => setOpenInsightXModal(false);
 
   const retrieveOptionFromPrimaryQuestionBlock = (data) => {
     if(data === 'Like'){
@@ -66,7 +52,7 @@ const Header = () => {
       setShowAcknowledgement(true);
     }
     else if(param=='close'){
-      handleClose();
+      handleCloseOpenInsightXModal();
       setShowPrimaryQuestionBlock(true);
       setShowLike(false);
       setShowDislike(false);
@@ -96,12 +82,12 @@ const Header = () => {
             <Link to="/">Home</Link>
             <Link to="/ai-expert">AI Expert</Link>
             <Link to="/about">About</Link>
-            <Link onClick={handleOpen}>InsightX</Link>
+            <Link onClick={handleOpenInsightXModal}>InsightX</Link>
           </div>
         </div>
         <Modal
-          open={open}
-          onClose={handleClose}
+          open={openInsightXModal}
+          onClose={handleCloseOpenInsightXModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
