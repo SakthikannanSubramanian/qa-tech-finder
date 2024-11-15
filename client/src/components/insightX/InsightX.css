@@ -1,0 +1,28 @@
+.primaryQuestionBlock{
+    width: 80%;
+    margin-left: 10%;
+}
+.ask{
+    font-size: "20px";
+    font-family: "Arial, Helvetica, sans-serif";
+ }
+
+ .mainContentContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+ }
+
+ .btnContainer{
+    display: flex;
+    display: row;
+    justify-content: space-evenly;
+ }
+
+ .innerBlockheader{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items:center;
+   background-color: #000035;
+ }
