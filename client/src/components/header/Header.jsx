@@ -3,65 +3,13 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from "../../assets/logo.svg";
 import headerImage from "../../assets/headerImage.png"; 
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import PrimaryQuestionBlock from "../insightX/PrimaryQuestionBlock";
-import LikeSubmissionBlock from "../insightX/LikeSubmissionBlock";
-import DisLikeSubmissionBlock from "../insightX/DisLikeSubmissionBlock";
-import RecommendationSubmissionBlock from "../insightX/RecommendationSubmissionBlock";
-import Acknowledgement from "../insightX/Acknowledgement";
+import InsightXModal from '../insightX/InsightXModal';
 
 const Header = () => {
   const [openInsightXModal, setOpenInsightXModal] = useState(false);
-  const [showPrimaryQuestionBlock, setShowPrimaryQuestionBlock] =
-    useState(true);
-  const [showLike, setShowLike] = useState(false);
-  const [showDislike, setShowDislike] = useState(false);
-  const [showRecommendation, setShowRecommendation] = useState(false);
-  const [showAcknowledgement, setShowAcknowledgement] = useState(false);
-  const handleOpenInsightXModal = () => setOpenInsightXModal(true);
-  const handleCloseOpenInsightXModal = () => setOpenInsightXModal(false);
-
-  const retrieveOptionFromPrimaryQuestionBlock = (data) => {
-    if(data === 'Like'){
-      setShowLike(true);
-      setShowPrimaryQuestionBlock(false);
-    }
-    else if(data === 'DisLike'){
-      setShowDislike(true);
-      setShowPrimaryQuestionBlock(false);
-    }
-    else if(data === 'Recommend'){
-      setShowRecommendation(true);
-      setShowPrimaryQuestionBlock(false);
-    }
-  };
-
-  const handleReturnToParent = (param) => {
-    if(param=='back'){
-      setShowPrimaryQuestionBlock(true);
-      setShowLike(false);
-      setShowDislike(false);
-      setShowRecommendation(false);
-    }
-    else if(param=='submitted'){
-      setShowPrimaryQuestionBlock(false);
-      setShowLike(false);
-      setShowDislike(false);
-      setShowRecommendation(false);
-      setShowAcknowledgement(true);
-    }
-    else if(param=='close'){
-      handleCloseOpenInsightXModal();
-      setShowPrimaryQuestionBlock(true);
-      setShowLike(false);
-      setShowDislike(false);
-      setShowRecommendation(false);
-      setShowAcknowledgement(false);
-    }
+  const retrieveStateValueFromInsightXModal = (stateValue) => {
+      setOpenInsightXModal(stateValue)
   }
-
-
   return (
     <header className="header">
       <div className="container">
@@ -82,25 +30,10 @@ const Header = () => {
             <Link to="/">Home</Link>
             <Link to="/ai-expert">AI Expert</Link>
             <Link to="/about">About</Link>
-            <Link onClick={handleOpenInsightXModal}>InsightX</Link>
+            <Link onClick={()=> setOpenInsightXModal(true)}>InsightX</Link>
           </div>
         </div>
-        <Modal
-          open={openInsightXModal}
-          onClose={handleCloseOpenInsightXModal}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx=".boxContainer">
-            <div className="boxSubContainer">
-              {showPrimaryQuestionBlock? <PrimaryQuestionBlock sendDataToParent={retrieveOptionFromPrimaryQuestionBlock}/>:<></>}
-              {showLike? <LikeSubmissionBlock sendDataToParent={handleReturnToParent} />:<></>}
-              {showDislike? <DisLikeSubmissionBlock   sendDataToParent={handleReturnToParent}/>:<></>}
-              {showRecommendation? <RecommendationSubmissionBlock   sendDataToParent={handleReturnToParent}/>:<></>}
-              {showAcknowledgement? <Acknowledgement   sendDataToParent={handleReturnToParent}/>:<></>}
-            </div>
-          </Box>
-        </Modal>
+        {openInsightXModal ? <InsightXModal isOpenModal={openInsightXModal}  sendDataToGrandParent={retrieveStateValueFromInsightXModal} />:<></>}
       </div>
     </header>
   );

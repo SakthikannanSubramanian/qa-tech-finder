@@ -5,9 +5,11 @@ import Ask from "./Ask";
 import TextField from "@mui/material/TextField";
 import BlankLine from "./BlankLine";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import Title from "./Title";
-import SubTitle from "./SubTitle";
+import CancelIcon from "@mui/icons-material/Cancel";
+import ReplyIcon from "@mui/icons-material/Reply";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import Chip from "@mui/material/Chip";
 import "./InsightX.css";
 
 const LikeSubmissionBlock = ({ sendDataToParent }) => {
@@ -17,11 +19,17 @@ const LikeSubmissionBlock = ({ sendDataToParent }) => {
   const onSubmit = () => {
     sendDataToParent("submitted");
   };
+
+  const onClose = () => {
+    sendDataToParent("close");
+  };
   return (
     <div>
       <header className="modalHeader">
-      <Title /> 
-      <SubTitle subTitle={"I like something.."} />
+        <Title title={"I like something.."} />
+        <div className="modalCloseBtnWrapper">
+          <CancelIcon sx={{ color: "#FFFFFF" }} onClick={() => onClose()} />
+        </div>
       </header>
       <BlankLine />
       <div className="primaryQuestionBlock">
@@ -40,12 +48,20 @@ const LikeSubmissionBlock = ({ sendDataToParent }) => {
           </div>
           <div className="btnContainer">
             <Stack spacing={2} direction="row">
-              <Button variant="outlined" onClick={() => onBack()} >
-                Back
-              </Button>
-              <Button variant="outlined" onClick={() => onSubmit()}>
-                Submit
-              </Button>
+              <Chip
+                icon={<ReplyIcon />}
+                label="Back"
+                variant="filled"
+                onClick={() => onBack()}
+                color="primary"
+              />
+              <Chip
+                icon={<SaveAltIcon />}
+                label="Submit"
+                variant="filled"
+                onClick={() => onSubmit()}
+                color="success"
+              />
             </Stack>
           </div>
           <BlankLine />

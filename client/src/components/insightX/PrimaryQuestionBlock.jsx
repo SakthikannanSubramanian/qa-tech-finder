@@ -5,14 +5,15 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Chip from "@mui/material/Chip";
-import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
-import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
-import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
-import "./InsightX.css";
 import Ask from "./Ask";
 import Title from "./Title";
-import SubTitle from "./SubTitle";
+import CancelIcon from '@mui/icons-material/Cancel';
+import Avatar from "@mui/material/Avatar";
+import "./InsightX.css";
+import BlankLine from "./BlankLine";
+import likeIcon from '../../assets/likeIcon.gif';
+import dislikeIcon from '../../assets/dislikeIcon.gif';
+import recommendIdea from '../../assets/recommendIdea.gif';
 
 const PrimaryQuestionBlock = ({ sendDataToParent }) => {
   const onLikeSubmit = () => {
@@ -24,6 +25,9 @@ const PrimaryQuestionBlock = ({ sendDataToParent }) => {
   const onRecommendSubmit = () => {
     sendDataToParent("Recommend");
   };
+  const onClose = () => {
+    sendDataToParent("close");
+  };
 
   let [likeHighlightIcon, setLikeHighlightIcon] = useState(false);
   let [dislikeHighlightIcon, setDislikeHighlightIcon] = useState(false);
@@ -32,8 +36,10 @@ const PrimaryQuestionBlock = ({ sendDataToParent }) => {
   return (
     <div>
       <header className="modalHeader">
-        <Title /> 
-        <SubTitle subTitle={"Share your Xperience"} />
+        <Title title={"Share Your Xperience"} />
+        <div className="modalCloseBtnWrapper">
+          <CancelIcon sx={{ color: "#FFFFFF" }} onClick={() => onClose()} />
+        </div>
       </header>
       <div className="primaryQuestionBlock">
         <Ask question={"What kind of insight do you have ?"} />
@@ -47,18 +53,12 @@ const PrimaryQuestionBlock = ({ sendDataToParent }) => {
                 onMouseLeave={() => setLikeHighlightIcon(false)}
               >
                 <ListItemButton>
-                  <Chip
-                    size="large"
-                    variant="outlined"
-                    icon={<SentimentSatisfiedAltIcon />}
-                    clickable={true}
-                    sx={{
-                      borderColor: "transparent",
-                      marginRight: 0,
-                      marginTop: 1,
-                    }}
-                    color={likeHighlightIcon ? "success" : "default"}
+                  <Avatar
+                    alt="Like"
+                    src={likeIcon}
                   />
+                  <BlankLine />
+                  <BlankLine />
                   <ListItemText primary="I like something" />
                 </ListItemButton>
               </ListItem>
@@ -69,18 +69,12 @@ const PrimaryQuestionBlock = ({ sendDataToParent }) => {
                 onMouseLeave={() => setDislikeHighlightIcon(false)}
               >
                 <ListItemButton>
-                  <Chip
-                    size="large"
-                    variant="outlined"
-                    icon={<SentimentVeryDissatisfiedIcon />}
-                    clickable={true}
-                    sx={{
-                      borderColor: "transparent",
-                      marginRight: 0,
-                      marginTop: 1,
-                    }}
-                    color={dislikeHighlightIcon ? "error" : "default"}
+                  <Avatar
+                    alt="Dislike"
+                    src={dislikeIcon}
                   />
+                  <BlankLine />
+                  <BlankLine />
                   <ListItemText primary="I don't like something" />
                 </ListItemButton>
               </ListItem>
@@ -91,18 +85,12 @@ const PrimaryQuestionBlock = ({ sendDataToParent }) => {
                 onMouseLeave={() => setRecommendHighlightIcon(false)}
               >
                 <ListItemButton>
-                  <Chip
-                    size="large"
-                    variant="outlined"
-                    icon={<EmojiObjectsIcon />}
-                    clickable={true}
-                    sx={{
-                      borderColor: "transparent",
-                      marginRight: 0,
-                      marginTop: 1,
-                    }}
-                    color={recommendHighlightIcon ? "warning" : "default"}
+                  <Avatar
+                    alt="Recommendation"
+                    src={recommendIdea}
                   />
+                  <BlankLine />
+                  <BlankLine />
                   <ListItemText primary="I have a recommendation" />
                 </ListItemButton>
               </ListItem>

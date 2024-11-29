@@ -1,10 +1,5 @@
-const Title = () => {
-  const style = {
-    "color": "#FFFFFF",
-    "font-size": "40px",
-    "font-family": "Georgia, serif",
-    "text-align":"center"
-  };
-  return <p style={style}>Techscape</p>;
-};
+import "./InsightX.css";
+const Title=(props)=>{
+    return(<p className="title">{props.title}</p>)
+}
 export default Title;

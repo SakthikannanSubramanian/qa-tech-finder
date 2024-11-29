@@ -1,4 +1,5 @@
+import "./InsightX.css";
 const Ask=({question})=>{
-    return(<p className="ask">{question}</p>)
+    return(<h3 className="ask">{question}</h3>)
 }
 export default Ask;
