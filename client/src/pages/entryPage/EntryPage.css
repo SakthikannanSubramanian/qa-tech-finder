@@ -1,0 +1,46 @@
+/* EntryPage.css */
+.entry-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin: 0; /* Reset margins */
+    padding: 0; /* Reset padding */
+  }
+  
+  .entry-page h1 {
+    font-size: 2rem;
+    margin-bottom: 30px; /* Adjust the space between the header and buttons */
+    color: #333;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+    flex-direction: row; /* Align buttons side by side */
+    justify-content: center; /* Center buttons horizontally */
+  }
+  
+  .large-button {
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 250px;
+  }
+  
+  .large-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .large-button:focus {
+    outline: none;
+  }
+  
