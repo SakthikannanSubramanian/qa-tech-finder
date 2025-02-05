@@ -60,7 +60,7 @@ const Home = () => {
 
   return (
     <div>
-      <Search />
+      {/* <Search /> */}
       {loading && <Loading />}
       {error && <p>Error: {error}</p>}
       {topicsData &&

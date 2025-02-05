@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchQuestionnaire, saveUserResponses } from '../../redux/actions/dataActions';
+import { useNavigate } from 'react-router-dom'
+import { fetchQuestionnaire, saveUserResponses, submitQuestionnaire } from '../../redux/actions/dataActions';
 import { useQuestionnaireData } from '../../hooks/useQuestionnaireData';
 import QuestionItem from '../../components/questionItem/QuestionItem';
 import './Questionnaire.css';
@@ -10,11 +11,18 @@ const Questionnaire = () => {
     const [userResponses, setUserResponses] = useState([]);
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const questionnaireRef = useRef(null);
+    
 
     useEffect(() => {
         dispatch(fetchQuestionnaire());
+
+        const savedResponses = JSON.parse(localStorage.getItem('userResponses'));
+        if (savedResponses) {
+            setUserResponses(savedResponses);
+        }
     }, [dispatch]);
 
     const { sections } = useQuestionnaireData();
@@ -44,10 +52,9 @@ const Questionnaire = () => {
         return Object.keys(sectionErrors).length === 0;
     };
 
-    const handleAnswerSelect = (questionId, selectedLevel) => {
+    const handleAnswerSelect = (questionId, questionWeightage, selectedLevel) => {
         const updatedResponses = [...userResponses];
 
-        // Find or create the current parameter
         let currentParam = updatedResponses.find(
             (response) => response.Parameter === sections[currentSectionIndex].title
         );
@@ -55,12 +62,12 @@ const Questionnaire = () => {
         if (!currentParam) {
             currentParam = {
                 Parameter: sections[currentSectionIndex].title,
+                ParameterWeightage: sections[currentSectionIndex].parameterWeightage,
                 responses: [],
             };
             updatedResponses.push(currentParam);
         }
 
-        // Update or add the response
         const questionIndex = currentParam.responses.findIndex(
             (response) => response.question === questionId
         );
@@ -70,13 +77,15 @@ const Questionnaire = () => {
         } else {
             currentParam.responses.push({
                 question: questionId,
+                weightage: questionWeightage,
                 responseSelectedLevel: selectedLevel,
             });
         }
 
         setUserResponses(updatedResponses);
 
-        // Clear error if present
+        localStorage.setItem('userResponses', JSON.stringify(updatedResponses));
+
         setErrors((prevErrors) => ({
             ...prevErrors,
             [questionId]: false,
@@ -99,8 +108,13 @@ const Questionnaire = () => {
 
     const handleSubmit = () => {
         if (validateCurrentSection()) {
-            console.log('Final User Responses:', userResponses);
-            dispatch(saveUserResponses(userResponses)); 
+
+            dispatch(saveUserResponses(userResponses));
+            dispatch(submitQuestionnaire(userResponses))
+
+            localStorage.removeItem('userResponses');
+
+            navigate('/results');
         }
     };
 
@@ -111,13 +125,13 @@ const Questionnaire = () => {
             {sections[currentSectionIndex]?.data?.length > 0 ? (
                 <>
                     <h2>{sections[currentSectionIndex].title}</h2>
-                    <label className='mandatory-text'>* mandatory</label>
+                    <label className="mandatory-text">* mandatory</label>
                     {sections[currentSectionIndex].data.map((parameterItem, idx) => (
                         <QuestionItem
                             key={idx}
                             question={parameterItem}
-                            onAnswerSelect={(questionId, level) =>
-                                handleAnswerSelect(questionId, level)
+                            onAnswerSelect={(questionId, questionWeightage, level) =>
+                                handleAnswerSelect(questionId, questionWeightage, level)
                             }
                             userAnswer={
                                 userResponses

@@ -7,6 +7,7 @@ export const useQuestionnaireData = () => {
     const sections = questionnaire
         ? Array.from(new Set(questionnaire.map(q => q.Parameter))).map(parameter => ({
             title: parameter,
+            parameterWeightage: questionnaire.filter(q => q.Parameter === parameter)[0].ParameterWeightage,
             data: questionnaire.filter(q => q.Parameter === parameter)[0].Questions,
         }))
         : [];

@@ -13,7 +13,7 @@ const QuestionItem = ({ question, onAnswerSelect, userAnswer, hasError }) => {
                             name={question.Question} 
                             value={option.Level} 
                             checked={userAnswer === option.Level} 
-                            onChange={() => onAnswerSelect(question.Question, option.Level)} 
+                            onChange={() => onAnswerSelect(question.Question, question.qWeightage, option.Level)} 
                             className="custom-radio"
                         />
                         {option.Description || option.Range} 

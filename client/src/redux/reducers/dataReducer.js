@@ -5,6 +5,7 @@ import {
     FETCH_QUESTIONNAIRE_SUCESS,
     FETCH_QUESTIONNAIRE_FAILURE,
     SAVE_USER_RESPONSES,
+    SAVE_CALCULATED_SCORES
 } from '../actions/dataActions';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
     questionnaire: [],
     userResponses: [], 
     error: '',
+    calculatedScores: {},
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -52,6 +54,11 @@ const dataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userResponses: action.payload, 
+            };
+        case SAVE_CALCULATED_SCORES:
+            return { 
+                ...state, 
+                calculatedScores: action.payload 
             };
         default:
             return state;

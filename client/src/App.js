@@ -7,6 +7,8 @@ import Questionnaire from './pages/questionnaire/Questionnaire'
 import EntryPage from './pages/entryPage/EntryPage';
 import About from './pages/about/About';
 import AIExpert from './pages/aiexpert/AIExpert';
+import ResultsPage from './pages/resultsPage/ResultsPage';
+
 import "./App.css"
 
 const App = () => (
@@ -20,6 +22,7 @@ const App = () => (
                     <Route path="/home" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/ai-expert" element={<AIExpert />} />
+                    <Route path="/results" element={<ResultsPage />} />
                 </Routes>
             </main>
             <Footer/>

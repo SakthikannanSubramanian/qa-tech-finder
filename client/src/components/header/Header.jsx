@@ -18,7 +18,7 @@ const Header = () => {
               <p>Navigate the tech landscape effortlessly with our expert comparisons. Find the best technology solutions tailored to your needs with ease and confidence.</p>
             </div>
             <div className="header-image-container"> 
-              <img src={headerImage} alt="Header Image" className="header-image" />
+              <img src={headerImage} alt="Header" className="header-image" />
             </div>
           </div>
           <div className="header-links">
