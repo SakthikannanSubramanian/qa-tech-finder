@@ -36,7 +36,7 @@ export const fetchData = () => {
     return async dispatch => {
         dispatch(fetchDataRequest());
         try {
-            const response = await axios.get('http://localhost:5001/api/v1/data');//'http://172.20.0.2:5001/api/v1/data'
+            const response = await axios.get('https://qa-tech-finder.onrender.com/api/v1/data');//'http://172.20.0.2:5001/api/v1/data'
             dispatch(fetchDataSuccess(response.data));
         } catch (error) {
             dispatch(fetchDataFailure(error.message));
@@ -47,7 +47,7 @@ export const fetchData = () => {
 export const fetchQuestionnaire = () => {
     return async dispatch => {
         try{
-            const response = await axios.get('http://localhost:5001/api/v1/questionnaire');//http://172.20.0.2:5001/api/v1/questionnaire
+            const response = await axios.get('https://qa-tech-finder.onrender.com/api/v1/questionnaire');//http://172.20.0.2:5001/api/v1/questionnaire
             dispatch(fetchQuestionnaireSuccess(response.data.questionnaire))
         }catch (error) {
             console.log("error" + error.response)
@@ -68,7 +68,7 @@ export const saveCalculatedScores = (calculatedScores) => ({
 
 export const submitQuestionnaire = (userResponses) => async (dispatch) => {
     try {
-        const response = await axios.post('http://localhost:5001/api/v1/questionnaire', {
+        const response = await axios.post('https://qa-tech-finder.onrender.com/api/v1/questionnaire', {
             responses: userResponses,
         });
 
