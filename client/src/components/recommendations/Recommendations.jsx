@@ -5,7 +5,6 @@ import './Recommendations.css';
 
 const Recommendations = () => {
   const finalLevels = useSelector(state => state.data.calculatedScores.parameterScores);
-  
   const recommendations = useSelector(state => state.data.questionnaire.map(parameterItem => 
     ({"parameter": parameterItem.Parameter, 
     "recommendation": parameterItem.Recommendations})));
@@ -18,7 +17,7 @@ const Recommendations = () => {
   return (
     <div className="recommendations-container">
       
-      {finalLevels.map(param => {
+      {finalLevels && finalLevels.map(param => {
         const { Parameter, level } = param; 
         const recommendation = getRecommendation(Parameter, level);
 
