@@ -38,12 +38,12 @@ const PrimaryQuestionBlock = ({ sendDataToParent }) => {
       <header className="modalHeader">
         <Title title={"Share Your Xperience"} />
         <div className="modalCloseBtnWrapper">
-          <CancelIcon sx={{ color: "#FFFFFF" }} onClick={() => onClose()} />
+          <CancelIcon sx={{ color: "#FFFFFF" }} onClick={() => onClose()}/>
         </div>
       </header>
       <div className="primaryQuestionBlock">
         <Ask question={"What kind of insight do you have ?"} />
-        <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+        <Box sx={{ width: "100%", bgcolor: "background.paper"}}>
           <nav aria-label="main mailbox folders">
             <List>
               <ListItem
@@ -97,6 +97,7 @@ const PrimaryQuestionBlock = ({ sendDataToParent }) => {
             </List>
           </nav>
         </Box>
+        &nbsp;
       </div>
     </div>
   );

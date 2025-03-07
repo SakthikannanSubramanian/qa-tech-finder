@@ -26,6 +26,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .innerBlockheader {
@@ -61,66 +62,59 @@
   padding-left: 10%;
 }
 
+.closeIcon{
+  color: #ffffff;
+}
+
+.mandatoryMessage{
+  color: red;
+  text-align:center;
+}
+
 /* Responsive Styles (adjust as needed) */
-@media (max-width: 768px) {
+
+/* For Mobile devices range  */
+@media screen and (max-width: 600px) {
+
+  .title {
+    font-size: 15px;
+  }
+
+  .boxSubContainer {
+    background-color: #ffffff;
+    width: 60%;
+    height: 40%;
+    margin-top: 60%;
+  }
+  
   .primaryQuestionBlock {
-    width: 90%;
-    margin-left: 5%;
-  }
-
-  .question {
-    padding-left: 5%;
-  }
-
-  .boxContainer {
-    width: auto;
+    width: 80%;
+    text-align: center;
   }
 
   .ask {
-    font-size: "10px";
+    font-size: "5px";
     font-family: "Arial, Helvetica, sans-serif";
   }
   .title {
     font-size: "10px";
     font-family: "Arial, Helvetica, sans-serif";
   }
-  .btnContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+
 }
 
-/* Responsive Styles */
-@media (max-width: 900px) {
-  .primaryQuestionBlock {
-    width: 90%;
-    margin-left: 5%;
-  }
-
-  .question {
-    padding-left: 5%;
-  }
-
-  .boxContainer {
-    width: auto;
-  }
-  .ask {
-    font-size: "10px";
-    font-family: "Arial, Helvetica, sans-serif";
-  }
+/* For Tablet devices range  */
+@media screen and (max-width: 768px) {
   .title {
-    font-size: "10px";
-    font-family: "Arial, Helvetica, sans-serif";
+    font-size: 20px;
   }
-  .btnContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  .boxSubContainer {
+    background-color: #ffffff;
+    width: 50%;
+    height: 20%;
+    margin-top: 60%;
   }
-}
 
-@media (max-width: 600px) {
   .primaryQuestionBlock {
     width: 90%;
     margin-left: 5%;
@@ -141,9 +135,61 @@
     font-size: "10px";
     font-family: "Arial, Helvetica, sans-serif";
   }
-  .btnContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+}
+
+/* For Laptop & desktop devices range  */
+@media screen and (max-width: 900px) {
+
+  .boxSubContainer {
+    background-color: #ffffff;
+    width: 50%;
+    margin-top: 30%;
+    margin-left: 25%;
+  }
+  .primaryQuestionBlock {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .question {
+    padding-left: 5%;
+  }
+
+  .boxContainer {
+    width: auto;
+  }
+  .ask {
+    font-size: "10px";
+    font-family: "Arial, Helvetica, sans-serif";
+  }
+  .title {
+    font-size: "10px";
+    font-family: "Arial, Helvetica, sans-serif";
+  }
+ 
+}
+
+/* For Monitors & wide desktops devices range  */
+@media screen and (min-width: 1200px) {
+  .primaryQuestionBlock {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .question {
+    padding-left: 5%;
+  }
+
+  .boxContainer {
+    width: auto;
+  }
+  .ask {
+    font-size: "10px";
+    font-family: "Arial, Helvetica, sans-serif";
+  }
+  .title {
+    font-size: "10px";
+    font-family: "Arial, Helvetica, sans-serif";
   }
 }
+
